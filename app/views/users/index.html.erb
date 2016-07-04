@@ -1,15 +1,15 @@
 <h1><%= t"views.user.index.list all users"%></h1>
 
-<%= will_paginate %>
 
-<ul class="users">
+
+<ul class="list-group">
   <% @users.each do |user| %>
-    <li>
-      <%= link_to user.name, user %>
-      <%= user.email %>
-      <%= user.avatar %>
-    </li>
+  <li class="list-group-item">
+    <span> <%= image_tag user.avatar.url(:thumb), size: "50x50" if user.avatar %></span>
+    <span> <%= link_to user.name, user %> </span>
+  </li>
   <% end %>
 </ul>
 
 <%= will_paginate %>
+

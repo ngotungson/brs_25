@@ -1,4 +1,4 @@
-<span>
+<div class="like-activity pull-right">
   <% if current_user.present? %>
     <span id="activity_<%=activity.id%>-like_button"
       class="like-activity-button">
@@ -18,4 +18,4 @@
   <span>
     <%= t "views.activities.likes" %>
   </span>
-</span>
+</div>

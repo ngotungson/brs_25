@@ -111,6 +111,7 @@ en:
         cancelbutton: "Cancel"
         delete_confirm: "Are you sure?"
         newrequestbutton: "New request"
+        functions: "Functions"
       new:
         title: "Create new request"
         createbutton: "Create request"
@@ -145,11 +146,13 @@ en:
     admin:
       user:
         index:
+          dashboard: "User Dashboard"
           deletebutton: "Delete"
           deleteconfirm: "Are you sure?"
+          adminfunction: "Functions"
       book:
         index:
-          dashboard: "DashBoard"
+          dashboard: "Book Dashboard"
           newbookbutton: "New book"
           deletebutton: "Delete"
           editbutton: "Edit"
@@ -159,10 +162,10 @@ en:
           author: "Author"
           numberofpage: "Number of pages"
           publishdate: "Publish Date"
-          adminfunction: "Admin Function"
+          adminfunction: "Functions"
           deleteconfirm: "Are your sure?"
         new:
-          createnewbook: "Create new boook"
+          createnewbook: "Create new book"
           createbutton: "Add new book"
           category: "Category"
         edit:
@@ -170,12 +173,12 @@ en:
           updatebutton: "Save change"
       category:
         index:
-          dashboard: "DashBoard"
+          dashboard: "Category Dashboard"
           title: "Name"
           newcategorybutton: "New category"
           editbutton: "Edit"
           deletebutton: "Delete"
-          adminfunction: "Admin Function"
+          adminfunction: "Functions"
           deleteconfirm: "Are your sure?"
         new:
           createnewcategory: "Create new category"
@@ -186,12 +189,13 @@ en:
           updatebutton: "Save change"
       requests:
         index:
-          dashboard: "Request dashboard"
+          dashboard: "Request Dashboard"
           id: "Id"
           book_title: "Book Title"
           book_author: "Book author"
           content: "Content"
-          deletebutton: "Delete"
+          adminfunction: "Functions"
+          deletebutton: "Done"
           delete_confirm: "Are you sure?"
 
   controllers:
@@ -239,7 +243,7 @@ en:
       name: "Review"
 
   app:
-    bookapp: "Book app"
+    bookapp: "Framgia"
     home: "Home"
     help: "Help"
     profile: "Profile"
@@ -251,6 +255,8 @@ en:
     account: "Account"
     logged_in: "Please log in."
     request: "Requests"
+    categories: "Categories"
+    lastestbooks: "Lastest Added Books"
 
   datetime:
     distance_in_words:
@@ -276,3 +282,4 @@ en:
       about_x_months:
         one:   "about 1m"
         other: "about %{count}m"
+
