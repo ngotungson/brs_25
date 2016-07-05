@@ -1,43 +1,25 @@
 <div class="col-md-4">
-  <%= image_tag @book.image.url(:thumb) if @book.image? %>
-  <%= render "marks/mark_book" %>
-</div>
-<div class="col-md-8">
-  <table>
-    <tr>
-      <td><h3><%= t "views.book.show.title" %></h3></td>
-      <td><strong><%= @book.title %></strong></td>
-    </tr>
-    <tr>
-      <td><h3><%= t "views.book.show.author" %></h3></td>
-      <td><strong><%= @book.author %></strong></td>
-    </tr>
-    <tr>
-      <td><h3><%= t "views.book.show.category" %></h3></td>
-      <td><strong><%= @book.category.title %></strong></td>
-    </tr>
-    <tr>
-      <td><h3><%= t "views.book.show.numberpages" %></h3></td>
-      <td><strong><%= @book.number_of_pages %></strong></td>
-    </tr>
-    <tr>
-      <td><h3><%= t "views.book.show.publishdate" %></h3></td>
-      <td><strong> <%= @book.publish_date %></strong></td>
-    </tr>
-    <tr>
-      <td><h3><%= t "views.book.show.ratescore" %></h3></td>
-      <td>
-        <div class="average-review-rating" data-score="<%= @book.rate_score %>"></div>
-      </td>
-    </tr>
-  </table>
-  <div class="row">
-    <div class="col-md-4">
-      <div>
-        <%= link_to t("views.book.show.addreview"), new_book_review_path(@book),
-          class: "btn btn-info" %>
-      </div>
-      <%= render @book.reviews %>
+  <div class="thumbnail book-card">
+    <%= image_tag @book.image.url(:thumb) if @book.image? %>
+    <div class="caption">
+      <h3><%= link_to @book.title, @book %></h3>
+      <h4><%= t "views.book.show.author" %> <%= @book.author %></h4>
+      <h4><%= t "views.book.show.numberpages" %> <%= @book.number_of_pages %></h4>
+      <h4>
+        <%= t "views.book.show.ratescore" %>
+        <span class="average-review-rating" data-score="<%= @book.rate_score %>"></span>
+      </h4>
+      <h4> <%= render "marks/mark_book" %> </h4>
     </div>
   </div>
+  <div>
+    <%= link_to t("views.book.show.addreview"), new_book_review_path(@book),
+      class: "btn btn-info" %>
+  </div>
+</div>
+<div class="col-md-8">
+  <h2>  <%= t "views.book.show.reviews" %> </h2>
+  <%= render @book.reviews %>
+  <%= will_paginate @book.reviews
+    .paginate page: params[:page], per_page: Settings.per_page %>
 </div>

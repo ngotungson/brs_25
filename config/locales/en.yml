@@ -53,12 +53,16 @@ en:
       comment: "Comment"
 
   views:
+    marks:
+      favorite: "Favorite"
     activities:
       ago: "ago"
       you: "You"
       recent_action: "Recently actions on page:"
       likes: "likes"
     reviews:
+      rating: "Rate: "
+      content: "Content: "
       new:
         rating: "Rating"
         newreview: "New Review"
@@ -74,6 +78,7 @@ en:
         by: "by: "
         ratescore: "Rate score: "
       show:
+        comment: "Comment"
         title: "Title: "
         author: "Author: "
         numberpages: "Pages: "
@@ -87,6 +92,7 @@ en:
         delete_comment: "Are you sure delete this comment"
         markas: "Mark as..."
         marked: "This book is mark as "
+        reviews: "Reviews"
     users:
       new:
         signup: "Signup"
@@ -161,7 +167,9 @@ en:
           category: "Category"
           title: "Title"
           author: "Author"
+          rate_score: "Rate Score"
           numberofpage: "Number of pages"
+          reviews: "Reviews"
           publishdate: "Publish Date"
           adminfunction: "Functions"
           deleteconfirm: "Are your sure?"
@@ -176,6 +184,7 @@ en:
         index:
           dashboard: "Category Dashboard"
           title: "Name"
+          numberofbooks: "Number of books"
           newcategorybutton: "New category"
           editbutton: "Edit"
           deletebutton: "Delete"
@@ -192,14 +201,18 @@ en:
         index:
           dashboard: "Request Dashboard"
           id: "Id"
+          onwer: "Owner"
           book_title: "Book Title"
           book_author: "Book author"
           content: "Content"
           adminfunction: "Functions"
-          deletebutton: "Done"
+          deletebutton: "Accept"
           delete_confirm: "Are you sure?"
 
   controllers:
+    requests:
+      flash:
+        is_done: "Request is done"
     flash:
       common:
         create_success: '%{objects} is created'

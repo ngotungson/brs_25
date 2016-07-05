@@ -6,5 +6,6 @@ class CreateLikeActivities < ActiveRecord::Migration
 
       t.timestamps null: false
     end
+    add_index :like_activities, [:user_id, :activity_id], unique: true
   end
 end

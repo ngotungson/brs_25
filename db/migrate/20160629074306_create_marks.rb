@@ -4,9 +4,10 @@ class CreateMarks < ActiveRecord::Migration
       t.integer :user_id
       t.integer :book_id
       t.integer :mark_type
+      t.boolean :favorite, default: false
 
       t.timestamps null: false
     end
-    add_index :marks, [:user_id, :book_id], unique: true
+    add_index :marks, [:user_id, :book_id, :mark_type], unique: true
   end
 end

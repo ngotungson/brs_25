@@ -23,8 +23,10 @@ gem "coffee-rails", "~> 4.1.0"
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 #Add avatar for user
-gem "carrierwave", "0.10.0"
-gem "mini_magick", "3.8.0"
+gem 'aws-sdk', '~> 2'
+gem 'carrierwave',             '0.10.0'
+gem 'mini_magick',             '3.8.0'
+gem 'fog',                     '1.36.0'
 
 # Use jquery as the JavaScript library
 gem "jquery-rails"

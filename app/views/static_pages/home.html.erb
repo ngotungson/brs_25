@@ -2,8 +2,6 @@
   <center>
     <h1>
       <%= t "views.static_pages.home1" %>
-      <%= link_to t("views.static_pages.sign up"), signup_path,
-        class: "btn btn-lg btn-primary" %>
     </h1>
   </center>
 </div>
@@ -19,7 +17,11 @@
               <h3><%= link_to book.title, book %></h3>
               <h4><%= t "views.book.show.author" %> <%= book.author %></h4>
               <h4><%= t "views.book.show.numberpages" %> <%= book.number_of_pages %></h4>
-              <h4><%= t "views.book.show.ratescore" %> <%= book.rate_score %></h4>
+              <h4>
+                <%= t "views.book.show.ratescore" %>
+                <span class="average-review-rating" data-score="<%= book.rate_score %>"></span>
+              </h4>
+
             </div>
           </div>
         </div>
@@ -31,6 +33,5 @@
     <center> <%= t "views.activities.recent_action" %> </center>
     <%= render partial: "activities/activities",
       locals: {activities: @activities} %>
-    <%= will_paginate @activities %>
   </div>
 </div>

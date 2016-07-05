@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160629074306) do
+ActiveRecord::Schema.define(version: 20160705043153) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "user_id"
@@ -55,15 +55,18 @@ ActiveRecord::Schema.define(version: 20160629074306) do
     t.datetime "updated_at",  null: false
   end
 
+  add_index "like_activities", ["user_id", "activity_id"], name: "index_like_activities_on_user_id_and_activity_id", unique: true
+
   create_table "marks", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "book_id"
     t.integer  "mark_type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.boolean  "favorite",   default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
-  add_index "marks", ["user_id", "book_id"], name: "index_marks_on_user_id_and_book_id", unique: true
+  add_index "marks", ["user_id", "book_id", "mark_type"], name: "index_marks_on_user_id_and_book_id_and_mark_type", unique: true
 
   create_table "relationships", force: :cascade do |t|
     t.integer  "follower_id"
@@ -81,8 +84,9 @@ ActiveRecord::Schema.define(version: 20160629074306) do
     t.string   "book_title"
     t.string   "book_author"
     t.text     "content"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.boolean  "is_done",     default: false
   end
 
   create_table "reviews", force: :cascade do |t|

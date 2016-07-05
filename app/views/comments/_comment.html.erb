@@ -1,6 +1,18 @@
-<div><%= comment.content %></div>
-<%= link_to t("views.book.show.edit"),
-  edit_book_review_comment_path(comment.review.book, comment.review, comment) %>
-<%= link_to t("views.book.show.destroy"),
-  book_review_comment_path(comment.review.book, comment.review, comment),
-  method: :delete, data: {confirm: t("views.book.show.delete_comment")} %>
+<div class="comment">
+  <%= image_tag comment.user.avatar.url, size: "30x30" %>
+  <span><%= comment.user.name %></span>
+  <span class="time-ago-in-words pull-right">
+    <%= time_ago_in_words(comment.created_at) %>
+    <%= t("views.activities.ago") %>
+  </span>
+  <div><%= comment.content %></div>
+  <div>
+    <% if comment.user.is_user? (current_user) %>
+      <%= link_to t("views.book.show.edit"),
+        edit_book_review_comment_path(comment.review.book, comment.review, comment) %>
+      <%= link_to t("views.book.show.destroy"),
+        book_review_comment_path(comment.review.book, comment.review, comment),
+        method: :delete, data: {confirm: t("views.book.show.delete_comment")} %>
+    <% end %>
+  </div>
+</div>

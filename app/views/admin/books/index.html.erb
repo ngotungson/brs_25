@@ -6,12 +6,13 @@
 
 <table class="table table-hover">
   <tr>
-    <th><%= t "views.admin.book.index.bood_id" %></th>
+    <th><%= t "views.admin.book.index.book_id" %></th>
     <th><%= t "views.admin.book.index.category" %></th>
     <th><%= t "views.admin.book.index.title" %></th>
     <th><%= t "views.admin.book.index.author" %></th>
+    <th><%= t "views.admin.book.index.rate_score" %> </th>
     <th><%= t "views.admin.book.index.numberofpage" %></th>
-    <th><%= t "views.admin.book.index.publishdate" %></th>
+    <th><%= t "views.admin.book.index.reviews" %></th>
     <th><%= t "views.admin.book.index.adminfunction" %></th>
   </tr>
   <% @books.each do |book| %>
@@ -20,8 +21,9 @@
       <td> <%= book.category.title %> </td>
       <td> <%= book.title %> </td>
       <td> <%= book.author %> </td>
+      <td> <%= book.rate_score %></td>
       <td> <%= book.number_of_pages %> </td>
-      <td> <%= book.publish_date %> </td>
+      <td> <%= book.reviews.count %> </td>
       <td>
         <span>
           <%= link_to t("views.admin.book.index.editbutton"), edit_admin_book_url(book),

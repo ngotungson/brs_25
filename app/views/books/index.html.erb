@@ -13,7 +13,10 @@
           <h3><%= link_to book.title, book %></h3>
           <h4><%= t "views.book.show.author" %> <%= book.author %></h4>
           <h4><%= t "views.book.show.numberpages" %> <%= book.number_of_pages %></h4>
-          <h4><%= t "views.book.show.ratescore" %> <%= book.rate_score %></h4>
+          <h4>
+            <%= t "views.book.show.ratescore" %>
+            <span class="average-review-rating" data-score="<%= book.rate_score %>"></span>
+          </h4>
         </div>
       </div>
     </div>

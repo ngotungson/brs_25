@@ -20,6 +20,9 @@
             method: :delete, data: {confirm: t("views.requests.index.delete_confirm")},
             class:"btn btn-info" %>
         </span>
+        <% if request.is_done %>
+          <span class="btn btn-success"> Done </span>
+        <% end %>
       </td>
     </tr>
   <% end %>

@@ -19,4 +19,9 @@ class ApplicationController < ActionController::Base
       redirect_to login_url
     end
   end
+
+  def correct_user
+    @user = User.find_by id: params[:id]
+    redirect_to root_url unless @user.is_user? current_user
+  end
 end

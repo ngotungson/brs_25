@@ -1,15 +1,42 @@
-<div class="review-rating" data-score="<%= review.rating %>" ></div>
-<div><%= review.content %></div>
-<div>
-  <%= link_to t("views.book.show.comment"),
-    new_book_review_comment_path(review.book, review) %>
-</div>
-<%= render review.comments %>
-<div>
-  <%= link_to t("views.book.show.edit"),
-    edit_book_review_path(review.book, review), class: "btn btn-success" %>
-  <%= link_to t("views.book.show.destroy"),
-    book_review_path(review.book, review),
-    method: :delete, data: {confirm: t("views.book.show.delete_confirm")},
-    class: "btn btn-success" %>
+<div class="review-card">
+  <%= image_tag review.user.avatar.url, size: "30x30" %>
+  <span>
+    <%= review.user.name %>
+  </span>
+  <span class="time-ago-in-words pull-right">
+    <%= time_ago_in_words(review.created_at) %>
+    <%= t("views.activities.ago") %>
+  </span>
+  <div>
+    <%= t "views.reviews.rating" %>
+    <span class="review-rating" data-score="<%= review.rating %>" ></span>
+  </div>
+  <div>
+    <%= t "views.reviews.content" %>
+    <%= review.content %>
+  </div>
+  <div>
+    <% if review.user.is_user? (current_user) %>
+      <%= link_to t("views.book.show.edit"),
+        edit_book_review_path(review.book, review)%>
+      <%= link_to t("views.book.show.destroy"),
+        book_review_path(review.book, review),
+        method: :delete, data: {confirm: t("views.book.show.delete_confirm")} %>
+    <% end %>
+  </div>
+  <div>
+    <center>
+    <%= link_to t("views.book.show.comment"),
+      new_book_review_comment_path(review.book, review),
+      class: "btn btn-info" %>
+    </center>
+  </div>
+  <div class="comments">
+    <% @comments = review.comments
+      .paginate page: params[:page], per_page: Settings.comment.per_page %>
+    <% @comments.each do |comment| %>
+      <%= render comment %>
+    <% end %>
+    <%= will_paginate @comments%>
+  </div>
 </div>

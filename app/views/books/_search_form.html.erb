@@ -2,6 +2,7 @@
   <%= form_tag current_user.is_admin? ? admin_books_path : books_path,
     method: :get do %>
     <%= number_field_tag :rate_score, params[:rate_score],
+      step: "0.1", max: "5", min: "0",
       placeholder: t("views.book.index.ratesearch"), class: "form-control" %>
     <%= text_field_tag :search, params[:search],
       placeholder: t("views.book.index.valuesearch"), class: "form-control"  %>

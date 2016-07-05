@@ -14,21 +14,23 @@ class Book < ActiveRecord::Base
     scope :"#{name}_books",
     ->(user){where(id: Mark.send(name).where(user_id: user.id).pluck(:book_id))}
   end
+  scope :favorite_books,
+    ->(user){where(id: Mark.favorite.where(user_id: user.id).pluck(:book_id))}
 
   def self.search(search, rate)
     if search.present? && rate.present?
-      joins(:category).where("(books.title LIKE :getsearch
-        OR books.author LIKE :getsearch
-        OR categories.title LIKE :getsearch)
-        AND books.rate_score >= :rate",
-        getsearch: "%#{search}%", rate: rate)
+      joins(:category).where("(books.title ILIKE :getsearch
+        OR books.author ILIKE :getsearch
+        OR categories.title ILIKE :getsearch)
+        AND (books.rate_score >= :rate AND books.rate_score <= :rate1)",
+        getsearch: "%#{search}%", rate: (rate.to_i - 0.5), rate1: (rate.to_i + 0.5))
     elsif search.present? || rate.present?
       if search.blank?
-        where("rate_score >= ?", rate)
+        where("rate_score >= ? AND rate_score <= ?", (rate.to_i - 0.5), (rate.to_i + 0.5))
       else
-        joins(:category).where("books.title LIKE :getsearch
-          OR books.author LIKE :getsearch
-          OR categories.title LIKE :getsearch",
+        joins(:category).where("books.title ILIKE :getsearch
+          OR books.author ILIKE :getsearch
+          OR categories.title ILIKE :getsearch",
           getsearch: "%#{search}%")
       end
     else

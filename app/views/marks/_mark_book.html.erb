@@ -1,8 +1,14 @@
-<% if @marked_book && @marked_book.mark_type.present? %>
-  <h2>
-    <%= t "userbook.marked" %>
-    <%= @marked_book.mark_type %>
-  </h2>
+<% if @marked_book %>
+  <% if @marked_book.mark_type.present? %>
+    <h2>
+      <%= t "userbook.marked" %>
+      <%= @marked_book.mark_type %>
+    </h2>
+  <% end %>
+  <% if @marked_book.favorite %>
+   <h2> <%= t "views.marks.favorite" %> </h2>
+  <% end %>
+
   <%= link_to "change",
     edit_book_mark_path(@book, @marked_book), remote: true %>
   <div id="edit-mark"></div>

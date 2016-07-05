@@ -3,7 +3,13 @@
   <%= f.hidden_field :book_id %>
 
   <%= f.submit t("views.book.show.markas"), class: "btn btn-primary" %>
-  <span>
-    <%= f.select :mark_type, Mark.mark_types.keys %>
-  </span>
+  <div>
+    <%= f.select :mark_type, Mark.mark_types.keys, include_blank: true %>
+  </div>
+  <div>
+  <%= f.label :favorite, class: "checkbox inline" do %>
+    <%= f.check_box :favorite, {}, "true", "false" %>
+    <div><%= t "views.mark.favorite" %></div>
+  <% end %>
+  </div>
 <% end %>

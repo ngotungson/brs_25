@@ -15,6 +15,9 @@ class MarksController < ApplicationController
   end
 
   def update
+    if params[:mark_type].blank?
+      @user_book.mark_type = nil
+    end
     if @user_book.update_attributes marks_params
       flash[:success] = t "userbook.create.success"
     end
@@ -23,7 +26,7 @@ class MarksController < ApplicationController
 
   private
   def marks_params
-    params.require(:mark).permit :user_id, :book_id, :mark_type
+    params.require(:mark).permit :user_id, :book_id, :mark_type, :favorite
   end
 
   def load_mark

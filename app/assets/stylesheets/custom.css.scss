@@ -27,8 +27,7 @@ input {
 }
 
 .divpadding{
-  padding: 15px;
-  display: inline-block;
+  padding: 15px
 }
 
 #error_explanation {
@@ -170,19 +169,25 @@ h1, h2, h3 {
 #messagebox {
   position: fixed;
   margin-left: 20px;
-  left: 20px;
-  bottom: 20px;
+  left: 40%;
+  top: 10px;
   z-index: 10000;
   padding: 10px;
-  width: 30%;
+  width: 20%;
 }
 
-.book-card, .user-card {
+.book-card, .user-card, .review-card {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+.review-card {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  margin-bottom: 1em;
+}
+
 .show-activity {
-  border-left: 1px solid rgba(0, 0, 0, 0.2)
+  border-left: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .col-4 {
@@ -193,4 +198,18 @@ h1, h2, h3 {
 .col-6 {
   display: inline-block;
   width: 49%;
+}
+
+.comments {
+  margin-top: 1.5em;
+  padding-left: 3em;
+}
+
+.comment {
+  padding-top: 0.5em;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.request-done {
+  background: green;
 }

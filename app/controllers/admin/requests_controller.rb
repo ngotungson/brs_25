@@ -8,9 +8,9 @@ class Admin::RequestsController < ApplicationController
   end
 
   def destroy
-    if @request && @request.destroy
-      flash[:success] = t "controllers.flash.common.destroy_success",
-        objects: t("activerecord.model.request")
+    if @request
+      @request.update_attribute :is_done, true
+      flash[:success] = t "controllers.requests.flash.is_done"
     else
       flash[:danger] = t "controllers.flash.common.destroy_error",
         objects: t("activerecord.model.request")
